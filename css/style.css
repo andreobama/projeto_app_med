@@ -1,0 +1,33 @@
+
+
+.circle {
+    width: 100px;
+    height: 100px;
+    background: #EB974E;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+    position: absolute;
+    left:50%;
+    top:50%;
+
+
+}
+
+.text_circle {
+    position: relative;
+    left:50%;
+    top:50%;
+}
+
+.botao_login {
+    position: relative;
+    left:50%;
+    top: 50%;
+   
+
+    
+    
+}
+
+
