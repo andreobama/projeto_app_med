@@ -1,4 +1,6 @@
-
+body {
+ background-color: 
+}
 
 .circle {
     width: 100px;
@@ -7,27 +9,40 @@
     -moz-border-radius: 50px;
     -webkit-border-radius: 50px;
     border-radius: 50px;
-    position: absolute;
     left:50%;
     top:50%;
-
+    margin-top: -50px;
+    margin-left: -50px;
+    position: absolute;
 
 }
 
 .text_circle {
-    position: relative;
+    position: absolute;
     left:50%;
     top:50%;
+    margin-top: -8px;
+    margin-left: -29px;
 }
 
 .botao_login {
-    position: relative;
+    position: absolute;
     left:50%;
     top: 50%;
-   
+    margin-top: 70px;
+    margin-left: -15px;
+    
+}
 
+form {
+   
+    position: absolute;
+    left:50%;
+    top: 50%;
+    margin-top: 70px;
+    margin-left: -30px;
     
-    
+  
 }
 
 

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <script>
+        function somar() {
+            var n1, n2;
+
+            n1 = document.getElementById("n1").value;
+            n2 = document.getElementById("n2").value;
+
+            var resultado = parseInt(n1) + parseInt(n2);
+
+            document.getElementById("resultado").innerText = resultado;
+
+        }
+
+        function subtrair(numero1, numero2) {
+            return numero1 - numero2;
+
+        }
+
+        function multiplicar(numero1, numero2) {
+            return numero1 * numero2;
+
+        }
+
+        function dividir(numero1, numero2) {
+            return numero1 / numero2;
+
+        }
+    </script>
+
+    <form>
+        <label for="n1">Numero1:</label>
+        <input type="number" id="n1">
+        <br>
+
+        <label for="n2">Numero2:</label>
+        <input type="number" id="n2">
+        <br>
+
+        <input type="button" value="Somar" onclick="somar();">
+        <br>
+
+        <output id="resultado"></output>
+    </form>
+
+</body>
+
+</html>
