@@ -10,6 +10,30 @@
 
 <body>
     <script>
+
+        function calcular(){
+        var op = document.getElementById("opcao").value;
+        
+         if(op== "somar") {
+           somar();
+        }
+
+        else if (op =="subtrair") {
+           subtrair();
+        }
+
+         else if (op =="multiplicar") {
+           multiplicar();
+        }
+
+         else if (op =="dividir") {
+           dividir();
+        }
+        else {
+            alert ("Opção Desconhecida");
+        }
+    }
+            
         function somar() {
             var n1, n2;
 
@@ -22,18 +46,36 @@
 
         }
 
-        function subtrair(numero1, numero2) {
-            return numero1 - numero2;
+        function subtrair() {
+            var n1, n2;
+
+            n1 = document.getElementById("n1").value;
+            n2 = document.getElementById("n2").value;
+
+            var resultado = parseInt(n1) - parseInt(n2);
+            document.getElementById("resultado").innerText = resultado;
 
         }
 
         function multiplicar(numero1, numero2) {
-            return numero1 * numero2;
+            var n1, n2;
+
+            n1 = document.getElementById("n1").value;
+            n2 = document.getElementById("n2").value;
+
+            var resultado = parseInt(n1) * parseInt(n2);
+            document.getElementById("resultado").innerText = resultado;
 
         }
 
         function dividir(numero1, numero2) {
-            return numero1 / numero2;
+             var n1, n2;
+
+            n1 = document.getElementById("n1").value;
+            n2 = document.getElementById("n2").value;
+
+            var resultado = parseInt(n1) / parseInt(n2);
+            document.getElementById("resultado").innerText = resultado;
 
         }
     </script>
@@ -47,11 +89,19 @@
         <input type="number" id="n2">
         <br>
 
-        <input type="button" value="Somar" onclick="somar();">
+        <select id="opcao">
+            <option value="somar">Somar</option>
+            <option value="subtrair">Subtrair</option>
+            <option value="multiplicar">Multiplicar</option>
+            <option value="dividir">Dividir</option>
+        </select>
+
+        <input type="button" value="Calcular" onclick="calcular();">
         <br>
 
         <output id="resultado"></output>
     </form>
+
 
 </body>
 
