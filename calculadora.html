@@ -13,83 +13,54 @@
 
         function calcular(){
         var op = document.getElementById("opcao").value;
+        var n1, n2, resultado;
         
-         if(op== "somar") {
-           somar();
-        }
+        n1 = document.getElementById("x").value;
+        n2 = document.getElementById("y").value;
 
+        
+         if( n1 =="" || n2 =="") {
+           alert("Digite os números nos campos solicitados e escolha uma opção")
+           resultado ="";
+        }
+        else if (op== "somar") {
+           resultado = parseInt(n1) + parseInt(n2);
+        }
         else if (op =="subtrair") {
-           subtrair();
+           resultado = parseInt(n1) - parseInt(n2);
         }
-
-         else if (op =="multiplicar") {
-           multiplicar();
+        else if (op =="multiplicar") {
+           resultado = parseInt(n1) * parseInt(n2);
         }
-
-         else if (op =="dividir") {
-           dividir();
+        else if (op =="dividir") {
+            if(n2=="0") {
+                alert("Não pode dividir por 0")
+                resultado ="";
+            }
+        else { 
+           resultado = parseInt(n1) / parseInt(n2);
+        }
         }
         else {
             alert ("Opção Desconhecida");
+            resultado ="";
         }
+
+        document.getElementById("resultado").innerText = resultado;
     }
-            
-        function somar() {
-            var n1, n2;
-
-            n1 = document.getElementById("n1").value;
-            n2 = document.getElementById("n2").value;
-
-            var resultado = parseInt(n1) + parseInt(n2);
-
-            document.getElementById("resultado").innerText = resultado;
-
-        }
-
-        function subtrair() {
-            var n1, n2;
-
-            n1 = document.getElementById("n1").value;
-            n2 = document.getElementById("n2").value;
-
-            var resultado = parseInt(n1) - parseInt(n2);
-            document.getElementById("resultado").innerText = resultado;
-
-        }
-
-        function multiplicar(numero1, numero2) {
-            var n1, n2;
-
-            n1 = document.getElementById("n1").value;
-            n2 = document.getElementById("n2").value;
-
-            var resultado = parseInt(n1) * parseInt(n2);
-            document.getElementById("resultado").innerText = resultado;
-
-        }
-
-        function dividir(numero1, numero2) {
-             var n1, n2;
-
-            n1 = document.getElementById("n1").value;
-            n2 = document.getElementById("n2").value;
-
-            var resultado = parseInt(n1) / parseInt(n2);
-            document.getElementById("resultado").innerText = resultado;
-
-        }
     </script>
 
     <form>
         <label for="n1">Numero1:</label>
-        <input type="number" id="n1">
+        <input type="number" id="x">
         <br>
 
         <label for="n2">Numero2:</label>
-        <input type="number" id="n2">
+        <input type="number" id="y">
         <br>
 
         <select id="opcao">
+            <option selected value="">Selecione</option>
             <option value="somar">Somar</option>
             <option value="subtrair">Subtrair</option>
             <option value="multiplicar">Multiplicar</option>
