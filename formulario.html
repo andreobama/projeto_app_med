@@ -1,0 +1,55 @@
+<!DOCTYPE>
+<html lang="pt-BR">
+
+<head>
+    <title>Formulario</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+
+    <h1>Formulario de Cadastro</h1>
+
+    <!--começo do formulario-->
+    <form>
+        <label class="rotulo" for="nome">Nome:</label>
+        <input type="text" id="nome" size="50">
+        <br><br>
+        <label for="rotulo" for="idade">Idade:</label>
+        <input type="number" id="idade" min="0" max="150">
+        <br><br>
+        <label class="rotulo">Sexo:</label>
+        <input name="sexo" type="radio" value="masculino">Masculino
+        <input name="sexo" type="radio" value="feminino">Feminino
+        <br><br>
+        <label class="rotulo" for="observacoes">Observações;</label>
+        <textarea id="observacoes" rows="5" cols="50" style="resize:none,"></textarea>
+        <br><br>
+        <input type="button" id="cadastrar" value="Cadastrar" onclick="validarFormulario();">
+    </form>
+    <!--fim do formulario-->
+
+    <!--começo do script do formulario-->
+    <script>
+        function validarFormulario() {
+            var nome = document.getElementById("nome").value;
+            if (nome.trim() == "") {
+                alert("O nome é obrigatório");
+            }
+            // Validando a idade
+            var idade = document.getElementById("idade").value;
+            idade = parseInt(idade);
+
+            alert("Tipo =" + typeof idade + " /Valor= " + idade);
+
+        }
+    </script>
+
+
+
+
+
+</body>
+
+</html>
