@@ -1,48 +1,126 @@
-<!DOCTYPE>
-<html lang="pt-BR">
-
-<head>
-    <title>Formulario</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-
-<body>
-
-    <h1>Formulario de Cadastro</h1>
-
-    <!--começo do formulario-->
-    <form>
-        <label class="rotulo" for="nome">Nome:</label>
-        <input type="text" id="nome" size="50">
-        <br><br>
-        <label for="rotulo" for="idade">Idade:</label>
-        <input type="number" id="idade" min="0" max="150">
-        <br><br>
-        <label class="rotulo">Sexo:</label>
-        <input name="sexo" type="radio" value="masculino">Masculino
-        <input name="sexo" type="radio" value="feminino">Feminino
-        <br><br>
-        <label class="rotulo" for="observacoes">Observações;</label>
-        <textarea id="observacoes" rows="5" cols="50" style="resize:none,"></textarea>
-        <br><br>
-        <input type="button" id="cadastrar" value="Cadastrar" onclick="validarFormulario();">
-    </form>
-    <!--fim do formulario-->
-
-    <!--começo do script do formulario-->
-    <script>
-        function validarFormulario() {
-            var nome = document.getElementById("nome").value;
-            if (nome.trim() == "") {
-                alert("O nome é obrigatório");
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <title>Formulario</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            .hide {
+                display: none;
             }
-            // Validando a idade
-            var idade = document.getElementById("idade").value;
-            idade = parseInt(idade);
+        </style>
+    </head>
+    <body>
+        <h1>Formulario de Cadastro</h1>
+        
+        <form>
+            <label class="rotulo" for="nome">Nome:</label>
+            <input type="text" id="nome" size="40">
+            <br><br>
+            <label class="rotulo" for="idade">Idade:</label>
+            <input type="number" id="idade" min="18" max="150">
+            <br><br>
+            <label class="rotulo">Sexo:</label>
+            <input name="sexo" type="radio" value="masculino"> Masculino
+            <input name="sexo" type="radio" value="feminino"> Feminino
+            <input name="sexo" type="radio" value="outros"> Outro
+            <br><br>
+            <label>É brasileiro?</label>
+            <input name="brasileiro" type="checkbox" value="brasileiro" onchange="mostrarEasterEgg();">
+            <span id="easter-egg"></span>
+            <br><br>
+            <label for="documento">Documento: </label>
+            <select id="documento" onchange="alteraDocumentoInput(this.value)">
+                <option selected value="">Selecione...</option>
+                <option value="rg">RG</option>
+                <option value="cpf">CPF</option>
+                <option value="cnh">CNH</option>
+            </select>
+            <input class="hide" type="text" id="rg" maxlength="10" placeholder="digite seu rg">
+            <input class="hide" type="number" id="cpf" maxlength="11" placeholder="digite seu cpf">
+            <input class="hide" type="number" id="cnh" maxlength="11" placeholder="digite sua cnh">
+            <br><br>
+            <label class="rotulo" for="observacoes">Observações:</label>
+            <br>
+            <textarea id="observacoes" style="resize: none;" rows="5" cols="45"></textarea>
+            <br><br>
+            <input type="button" id="cadastrar" value="Cadastrar" onclick="validarFormulario();">
+        </form>
 
-            alert("Tipo =" + typeof idade + " /Valor= " + idade);
+        <script>
+            function validarFormulario() {
+                ///Validando nome
+                var nome = document.getElementById("nome").value;
+                if (nome.trim() == "") {
+                    alert("O nome é obrigatório!");
+                    return;
+                }
 
+                //Validando a idade
+                var idade = document.getElementById("idade").value;
+                idade = parseInt(idade);
+                if ( isNaN(idade) ) {
+                    idade = 0;
+                }
+                if ( (idade < 18) || (idade > 150) )  {
+                    alert("A idade mínima é 18 e a máxima é 150");
+                    return;
+                }
+
+                //Validando o sexo
+                var sexo = document.getElementsByName("sexo");
+                var selecionouSexo = false;
+
+                for( var i=0; i < sexo.length; i++ ) {
+                    
+                    if( sexo[i].checked == true ) {
+                        selecionouSexo = true;
+                    }
+
+                }
+
+                if (selecionouSexo == false) {
+                    alert("Selecione o sexo");
+                    return;
+                }
+
+                alert("Formulário ok, enviando dados para cadastro...")
+            }
+
+            function mostrarEasterEgg() {
+                //Mostrando easter egg
+                var br = document.getElementsByName("brasileiro");
+                var brasileiro = br[0].checked;
+                
+                if( brasileiro ) {
+                    document.getElementById("easter-egg").innerText = "HUE HUE";
+                } else {
+                    document.getElementById("easter-egg").innerText = "HELLO GRINGO!";
+                }
+            }
+
+            function alteraDocumentoInput(doc) {
+                var rgInput = document.getElementById("rg");
+                var cpfInput = document.getElementById("cpf");
+                var cnhInput = document.getElementById("cnh");
+
+        
+        if (doc =="") {
+             
+        }
+        else if(doc =="rg"){
+             rgInput.classList.remove("hide");
+             
+        }
+
+        
+        else if(doc =="cpf"){
+             cpfInput.classList.remove("hide");
+             
+        }
+         else if(doc =="cnh"){
+             cnhInput.classList.remove("hide");
+            
         }
     </script>
 
